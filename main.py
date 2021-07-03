@@ -45,7 +45,7 @@ plt.hist(annotation_times, bins=100)
 plt.title("Annotation time per task")
 plt.ylabel("Task count")
 plt.xlabel("Annotation time (ms)")
-plt.savefig("plots/outputs/question_1_b.png")
+plt.savefig("plots/question_1_b.png")
 
 annotation_times_without_outliers = reject_outliers(np.array(annotation_times))
 
@@ -54,7 +54,7 @@ plt.hist(annotation_times_without_outliers, bins=100)
 plt.title("Annotation time per task (without outliers)")
 plt.ylabel("Task count")
 plt.xlabel("Annotation time (ms)")
-plt.savefig("plots/outputs/question_1_b_no_outliers.png")
+plt.savefig("plots/question_1_b_no_outliers.png")
 
 print("1.c")
 number_of_tasks_per_annotator = []
@@ -127,16 +127,28 @@ plt.clf()
 plt.title("Repartition of the references values for each input")
 plt.pie([is_bicycles, is_not_bicycles], labels=[
         "True", "False"], autopct="%1.1f%%")
-plt.savefig("plots/outputs/question_3.png")
+plt.savefig("plots/question_3.png")
 
 print("Question 4")
 annotator_accuracy_rates = []
+best_performing_annotator_ids = []
 worst_performing_annotator_ids = []
 
 for annotator in annotators:
     accuracy_rate = annotator.get_accuracy_rate(references_dict)
     annotator_accuracy_rates.append(accuracy_rate)
-    if accuracy_rate < 0.7:
+    if accuracy_rate > 0.9:
+        best_performing_annotator_ids.append(annotator.id)
+    elif accuracy_rate < 0.7:
         worst_performing_annotator_ids.append(annotator.id)
 
+print(best_performing_annotator_ids)
 print(worst_performing_annotator_ids)
+print(statistics.mean(annotator_accuracy_rates))
+
+plt.clf()
+plt.hist(annotator_accuracy_rates)
+plt.title("Annotator accuracy rates")
+plt.ylabel("Frequency")
+plt.xlabel("Accuracy")
+plt.savefig("plots/question_4.png")
