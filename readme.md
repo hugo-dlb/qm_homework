@@ -1,5 +1,5 @@
 # Introduction
-This repository contains the code to solve the task from Quality Match: bicycle project crowd evaluation (version 1.1).
+This repository contains the code to solve the task "bicycle project crowd evaluation" (version 1.1).
 
 # Prerequisites
 - [Python >= 3.8](https://www.python.org/downloads/)
@@ -9,7 +9,7 @@ This repository contains the code to solve the task from Quality Match: bicycle 
 
 # Installation
 
-`git clone https://github.com/hugo-dlb/qm_homework.git`
-`cd qm_homework`
-`pip install -r requirements.txt`
-`python main.py`
+1. `git clone https://github.com/hugo-dlb/qm_homework.git`  
+2. `cd qm_homework`  
+3. `pip install -r requirements.txt`  
+4. `python main.py`
